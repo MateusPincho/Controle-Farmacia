@@ -39,7 +39,7 @@ class Remedio{
         string get_marca();
         string get_tarja();
         string get_tipo();
-        string get_unidades();
+        int get_unidades();
 };
 
 #endif

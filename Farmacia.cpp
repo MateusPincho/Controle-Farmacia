@@ -8,18 +8,18 @@ Farmacia::Farmacia()
 
     //Arquivo aberto para possibilitar a leitura.
     ifstream arquivo;
-	arquivo.open("Comprimidos.txt", ios::in); 
+	arquivo.open("Comprimidos.txt", ios::in);
 
     //se o arquivo estiver aberto, usar isso.
 	if(arquivo.is_open()){
 	    while(!arquivo.eof()){ // enquanto nao for o final do arquivo.
-			
+
             //Salvando os valores lidos
 	        getline(arquivo, nome);
-			
+
 			if (arquivo.eof())
 				break;
-			
+
 			getline(arquivo,gtin);
             getline(arquivo,validade);
 			arquivo >> preco;
@@ -32,34 +32,34 @@ Farmacia::Farmacia()
             arquivo >> peso;
             arquivo >> quant_comprimidos;
             arquivo >> cartelas ;
-			
+
             //Criacao do objeto com uso das variaveis criadas.
-            Comprimido comp(nome,gtin,validade,preco,marca,tarja,tipo, unidades,peso, quant_comprimidos, cartelas); 
-			
-            //Adicionando na lista 
-            lista_comprimidos.push_back(comp); 
-			
+            Comprimido comp(nome,gtin,validade,preco,marca,tarja,tipo, unidades,peso, quant_comprimidos, cartelas);
+
+            //Adicionando na lista
+            lista_comprimidos.push_back(comp);
+
             arquivo.ignore();
-        } 
+        }
 
         arquivo.close();//Fechando arquivo.
     }
-    
+
     //Caso nao consiga abrir o arquivo.
     else
 		cout<<"Nao foi possivel abrir o arquivo"<<endl;
 
     ifstream arquivo2;
-	arquivo2.open("Liquidos.txt", ios::in); 
+	arquivo2.open("Liquidos.txt", ios::in);
 
 	if(arquivo2.is_open()){
 	    while(!arquivo2.eof()){
-			
+
 	        getline(arquivo2, nome);
-			
-			if (arquivo2.eof()) //Para evitar de ler alem do que é necessario.
+
+			if (arquivo2.eof()) //Para evitar de ler alem do que ï¿½ necessario.
 				break;
-			
+
 			getline(arquivo2,gtin);
             getline(arquivo2,validade);
 			arquivo2 >> preco;
@@ -72,16 +72,16 @@ Farmacia::Farmacia()
             arquivo2 >> pesoliquido;
             getline(arquivo2, sabor);
 
-            Liquidos liq(nome,gtin,validade,preco,marca,tarja,tipo, unidades, pesoliquido, sabor); 
-			
-            lista_liquidos.push_back(liq);  
-			
+            Liquido liq(nome,gtin,validade,preco,marca,tarja,tipo, unidades, pesoliquido, sabor);
+
+            lista_liquidos.push_back(liq);
+
             arquivo2.ignore();
-        } 
+        }
 
         arquivo2.close();//Fechando arquivo.
     }
-    
+
     //Caso o arquivo nao seja aberto.
     else
 		cout<<"Nao foi possivel abrir o arquivo"<<endl;
@@ -99,7 +99,7 @@ void Farmacia::gravar_arquivo()
 			arquivo<<lista_comprimidos[i].get_nome()<<endl;
 			arquivo<<lista_comprimidos[i].get_gtin()<<endl;
 			arquivo<<lista_comprimidos[i].get_validade()<<endl;
-			arquivo<<lista_comprimidos[i].get_preco()<<endl;	
+			arquivo<<lista_comprimidos[i].get_preco()<<endl;
             arquivo<<lista_comprimidos[i].get_marca()<<endl;
             arquivo<<lista_comprimidos[i].get_tarja()<<endl;
             arquivo<<lista_comprimidos[i].get_tipo()<<endl;
@@ -112,7 +112,7 @@ void Farmacia::gravar_arquivo()
         //Fechando o arquivo.
         arquivo.close();
     }
-    
+
     //Caso o arquivo nao seja aberto.
     else
 		cout<<"Nao foi possivel abrir o arquivo"<<endl;
@@ -125,7 +125,7 @@ void Farmacia::gravar_arquivo()
 			arquivo2<<lista_liquidos[i].get_nome()<<endl;
 			arquivo2<<lista_liquidos[i].get_gtin()<<endl;
 			arquivo2<<lista_liquidos[i].get_validade()<<endl;
-			arquivo2<<lista_liquidos[i].get_preco()<<endl;	
+			arquivo2<<lista_liquidos[i].get_preco()<<endl;
             arquivo2<<lista_liquidos[i].get_marca()<<endl;
             arquivo2<<lista_liquidos[i].get_tarja()<<endl;
             arquivo2<<lista_liquidos[i].get_tipo()<<endl;
@@ -136,13 +136,13 @@ void Farmacia::gravar_arquivo()
 
         arquivo2.close();//Fecha arquivo.
 	}
-    
+
     //Caso nao seja possivel abrir o arquivo.
     else
 		cout<<"Nao foi possivel abrir o arquivo"<<endl;
 }
 
-}
+
 
 
 void Farmacia::adicionar_comprimido(Comprimido c)
@@ -155,14 +155,14 @@ void Farmacia::adicionar_liquido(Liquido l)
 	lista_liquidos.push_back(l);
 }
 
-void Farmacia::pesquisar_comprimido(string nzin) const
+void Farmacia::pesquisar_comprimido(string name)
 {
 	for (unsigned i = 0; i < lista_comprimidos.size(); i++)
    	   {
-            if (lista_comprimidos[i].get_nome() == nzin)
+            if (lista_comprimidos[i].get_nome() == name)
             	{
                 	cout << "Nome do Remedio : " << lista_comprimidos[i].get_nome() << endl;
-                	cout << "Codigo GTIN do Remedio é : " << lista_comprimidos[i].get_gtin() << endl;
+                	cout << "Codigo GTIN do Remedio ï¿½ : " << lista_comprimidos[i].get_gtin() << endl;
                 	cout << "Validade do Remedio : " << lista_comprimidos[i].get_validade()<< endl;
                 	cout << "Preco do Remedio : RS " << lista_comprimidos[i].get_preco() << endl;
                 	cout << "Marca do Remedio : " << lista_comprimidos[i].get_marca() << endl;
@@ -176,14 +176,14 @@ void Farmacia::pesquisar_comprimido(string nzin) const
         }
 }
 
-void Farmacia::pesquisa_liquido(string name) const
+void Farmacia::pesquisar_liquido(string name)
 {
 	for (unsigned i = 0; i < lista_liquidos.size(); i++)
    	   {
-            if (lista_comprimidos[i].get_nome() == nzin)
+            if (lista_comprimidos[i].get_nome() == name)
             	{
                 	cout << "Nome do Remedio : " << lista_liquidos[i].get_nome() << endl;
-                	cout << "Codigo GTIN do Remedio é : " << lista_liquidos[i].get_gtin() << endl;
+                	cout << "Codigo GTIN do Remedio ï¿½ : " << lista_liquidos[i].get_gtin() << endl;
                 	cout << "Validade do Remedio : " << lista_liquidos[i].get_validade()<< endl;
                 	cout << "Preco do Remedio : RS " << lista_liquidos[i].get_preco() << endl;
                 	cout << "Marca do Remedio : " << lista_liquidos[i].get_marca() << endl;
@@ -196,12 +196,12 @@ void Farmacia::pesquisa_liquido(string name) const
         }
 }
 
-void Farmacia::exibir_comprimido() const
+void Farmacia::exibir_comprimido()
 {
 	for (unsigned i = 0; i < lista_liquidos.size(); i++)
    	   {
     		cout << "Nome do Remedio : " << lista_liquidos[i].get_nome() << endl;
-    		cout << "Codigo GTIN do Remedio é : " << lista_liquidos[i].get_gtin() << endl;
+    		cout << "Codigo GTIN do Remedio ï¿½ : " << lista_liquidos[i].get_gtin() << endl;
     		cout << "Validade do Remedio : " << lista_liquidos[i].get_validade()<< endl;
     	   	cout << "Preco do Remedio : RS " << lista_liquidos[i].get_preco() << endl;
     	   	cout << "Marca do Remedio : " << lista_liquidos[i].get_marca() << endl;
@@ -214,12 +214,12 @@ void Farmacia::exibir_comprimido() const
         }
 }
 
-void Farmacia::exibir_liquido() const
+void Farmacia::exibir_liquido()
 {
 	for (unsigned i = 0; i < lista_liquidos.size(); i++)
    	   {
     		cout << "Nome do Remedio : " << lista_liquidos[i].get_nome() << endl;
-    		cout << "Codigo GTIN do Remedio é : " << lista_liquidos[i].get_gtin() << endl;
+    		cout << "Codigo GTIN do Remedio ï¿½ : " << lista_liquidos[i].get_gtin() << endl;
     		cout << "Validade do Remedio : " << lista_liquidos[i].get_validade()<< endl;
     		cout << "Preco do Remedio : RS " << lista_liquidos[i].get_preco() << endl;
     		cout << "Marca do Remedio : " << lista_liquidos[i].get_marca() << endl;

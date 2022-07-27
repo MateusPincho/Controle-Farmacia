@@ -6,7 +6,7 @@ Comprimido::Comprimido(string nome, string gtin , string validade, float preco ,
 	this-> peso = peso;
 	this-> quant_comprimidos = quant_comprimidos;
 	this-> cartelas = cartelas;
-	
+
 }
 
 //set do peso
@@ -16,7 +16,7 @@ void Comprimido::set_peso(int peso)
 }
 
 //get do peso
-int Comprimido::get_peso() const 
+int Comprimido::get_peso() const
 {
 	return peso;
 }
@@ -40,7 +40,7 @@ void Comprimido::set_cartelas(int cartelas)
 }
 
 //get cartelas
-int Comprimidos::get_cartelas() const
+int Comprimido::get_cartelas() const
 {
 	return cartelas;
 }
