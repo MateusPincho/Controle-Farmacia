@@ -1,4 +1,4 @@
-#include "Comprimido.h"	//include do arquivo de cabecalho Comprimido.h
+#include "Comprimido2.0.h"	//include do arquivo de cabecalho Comprimido.h
 
 //Construtor default + inicializacao dos atributos da classe Comprimido herdando Remedio
 Comprimido::Comprimido(string nome, string gtin , string validade, float preco , string marca , string tarja , string tipo , int unidades, int peso , int quant_comprimidos , int cartelas) : Remedio(nome,gtin,validade,preco,marca,tarja,tipo,unidades)
@@ -6,7 +6,7 @@ Comprimido::Comprimido(string nome, string gtin , string validade, float preco ,
 	this-> peso = peso;
 	this-> quant_comprimidos = quant_comprimidos;
 	this-> cartelas = cartelas;
-	
+
 }
 
 //set do peso
@@ -16,7 +16,7 @@ void Comprimido::set_peso(int peso)
 }
 
 //get do peso
-int Comprimido::get_peso() const 
+int Comprimido::get_peso() const
 {
 	return peso;
 }

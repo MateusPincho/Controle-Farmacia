@@ -1,4 +1,4 @@
-#include "Remedio.h"
+#include "Remedio2.0.h"
 
 Remedio::Remedio(string nome,string gtin,string validade, float preco, string marca, string tarja, string tipo, int unidades){
     this-> nome = nome;

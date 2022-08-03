@@ -26,12 +26,11 @@ Farmacia::Farmacia()
             arquivo.ignore();
             getline(arquivo,marca);
             getline(arquivo,tarja);
-            arquivo.ignore();
             getline(arquivo,tipo);
             arquivo >> unidades;
             arquivo >> peso;
             arquivo >> quant_comprimidos;
-            arquivo >> cartelas ;
+            arquivo >> cartelas;
 
             //Criacao do objeto com uso das variaveis criadas.
             Comprimido comp(nome,gtin,validade,preco,marca,tarja,tipo, unidades,peso, quant_comprimidos, cartelas);
@@ -66,10 +65,10 @@ Farmacia::Farmacia()
             arquivo2.ignore();
             getline(arquivo2,marca);
             getline(arquivo2,tarja);
-            arquivo2.ignore();
             getline(arquivo2,tipo);
             arquivo2 >> unidades;
             arquivo2 >> pesoliquido;
+            arquivo2.ignore();
             getline(arquivo2, sabor);
 
             Liquido liq(nome,gtin,validade,preco,marca,tarja,tipo, unidades, pesoliquido, sabor);
@@ -91,7 +90,7 @@ void Farmacia::gravar_arquivo(){
 	//Cria arquivo e abre para ser gravado os atributos dos objetos da lista.
     ofstream arquivo;
     arquivo.open("Comprimidos.txt", ios::trunc);
-    
+
 
     //Escrever todos os atributos no arquivo txt
     if (arquivo.is_open()){
@@ -172,12 +171,12 @@ bool Farmacia::ordenar_liquido(Liquido A, Liquido B)
     return (false);
 }
 //Métodos de pesquisa binaria, retornam a posição
-int Farmacia::pesquisar_comprimido(string nome) 
+int Farmacia::pesquisar_comprimido(string nome)
 {
     sort(lista_comprimidos.begin(),lista_comprimidos.end(),ordenar_comprimido);
     int low = 0;
-    int high = lista_comprimidos.size();
-    int middle = (low+high)/2;
+    int high = lista_comprimidos.size()-1;
+    int middle = (low+high+1)/2;
     int location =-1;
     do{
         if(nome==lista_comprimidos[middle].get_nome())
@@ -186,16 +185,16 @@ int Farmacia::pesquisar_comprimido(string nome)
             high=middle-1;
         else
             low=middle+1;
-        middle = (low+high)/2;
+        middle = (low+high+1)/2;
     }while( (low<=high)&&(location==-1) );
     return (location);
 }
-int Farmacia::pesquisar_liquido(string nome) 
+int Farmacia::pesquisar_liquido(string nome)
 {
     sort(lista_liquidos.begin(),lista_liquidos.end(),ordenar_liquido);
     int low = 0;
-    int high = lista_liquidos.size();
-    int middle = (low+high)/2;
+    int high = lista_liquidos.size()-1;
+    int middle = (low+high+1)/2;
     int location =-1;
     do{
         if(nome==lista_liquidos[middle].get_nome())
@@ -204,7 +203,7 @@ int Farmacia::pesquisar_liquido(string nome)
             high=middle-1;
         else
             low=middle+1;
-        middle = (low+high)/2;
+        middle = (low+high+1)/2;
     }while( (low<=high)&&(location==-1) );
     return (location);
 }
@@ -212,7 +211,7 @@ int Farmacia::pesquisar_liquido(string nome)
 void Farmacia::remover_comprimido(string nome, int quantidade)
 {
     int posicao = pesquisar_comprimido(nome);
-    int unidades;
+    int unidades=0;
     if (posicao==-1){
         cout<<"Comprimido não encontrado"<<endl;
     }
@@ -233,9 +232,9 @@ void Farmacia::remover_comprimido(string nome, int quantidade)
 void Farmacia::remover_liquido(string nome, int quantidade)
 {
     int posicao = pesquisar_liquido(nome);
-    int unidades;
+    int unidades=0;
     if (posicao==-1){
-        cout<<"Comprimido não encontrado"<<endl;
+        cout<<"Líquido não encontrado"<<endl;
     }
     else
     {
@@ -251,44 +250,58 @@ void Farmacia::remover_liquido(string nome, int quantidade)
         }
     }
 }
-void Farmacia::imprimir_comprimido(string nome) 
+void Farmacia::imprimir_comprimido(string nome)
 {
-    int pos;
+    int pos=0;
     pos = pesquisar_comprimido(nome);
-    cout << "Nome do Remedio : " << lista_comprimidos[pos].get_nome() << endl;
-    cout << "Codigo GTIN do Remedio é : " << lista_comprimidos[pos].get_gtin() << endl;
-    cout << "Validade do Remedio : " << lista_comprimidos[pos].get_validade()<< endl;
-    cout << "Preco do Remedio : RS " << lista_comprimidos[pos].get_preco() << endl;
-    cout << "Marca do Remedio : " << lista_comprimidos[pos].get_marca() << endl;
-    cout << "Tarja do Remedio : " << lista_comprimidos[pos].get_tarja() << endl;
-    cout << "Tipo do Remedio : " << lista_comprimidos[pos].get_tipo() <<endl;
-    cout << "Unidades : " << lista_comprimidos[pos].get_unidades() << endl;
-    cout << "Peso : " << lista_comprimidos[pos].get_peso() <<endl;
-    cout << "Quantidade de comprimidos : " << lista_comprimidos[pos].get_quant_comprimidos() << endl;
-    cout << "Numero de Cartelas: " << lista_comprimidos[pos].get_cartelas() <<endl;
+    if (pos==-1)
+    {
+        cout<<"Comprimido não encontrado"<<endl;
+    }
+    else{
+        cout << "Nome do Remedio : " << lista_comprimidos[pos].get_nome() << endl;
+        cout << "Codigo GTIN do Remedio é : " << lista_comprimidos[pos].get_gtin() << endl;
+        cout << "Validade do Remedio : " << lista_comprimidos[pos].get_validade()<< endl;
+        cout << "Preco do Remedio : RS " << lista_comprimidos[pos].get_preco() << endl;
+        cout << "Marca do Remedio : " << lista_comprimidos[pos].get_marca() << endl;
+        cout << "Tarja do Remedio : " << lista_comprimidos[pos].get_tarja() << endl;
+        cout << "Tipo do Remedio : " << lista_comprimidos[pos].get_tipo() <<endl;
+        cout << "Unidades : " << lista_comprimidos[pos].get_unidades() << endl;
+        cout << "Peso : " << lista_comprimidos[pos].get_peso() <<endl;
+        cout << "Quantidade de comprimidos : " << lista_comprimidos[pos].get_quant_comprimidos() << endl;
+        cout << "Numero de Cartelas: " << lista_comprimidos[pos].get_cartelas() <<endl;
+    }
+
 }
-void Farmacia::imprimir_liquido(string nome) 
+void Farmacia::imprimir_liquido(string nome)
 {
-    int pos;
+    int pos=0;
     pos = pesquisar_liquido(nome);
-    cout << "Nome do Remedio : " << lista_liquidos[pos].get_nome() << endl;
-    cout << "Codigo GTIN do Remedio é : " << lista_liquidos[pos].get_gtin() << endl;
-    cout << "Validade do Remedio : " << lista_liquidos[pos].get_validade()<< endl;
-    cout << "Preco do Remedio : RS " << lista_liquidos[pos].get_preco() << endl;
-    cout << "Marca do Remedio : " << lista_liquidos[pos].get_marca() << endl;
-    cout << "Tarja do Remedio : " << lista_liquidos[pos].get_tarja() << endl;
-    cout << "Tipo do Remedio : " << lista_liquidos[pos].get_tipo() <<endl;
-    cout << "Unidades : " << lista_liquidos[pos].get_unidades() << endl;
-    cout << "Peso Liquido : " << lista_liquidos[pos].get_pesoliquido() <<endl;
-    cout << "Sabor: : " << lista_liquidos[pos].get_sabor() << endl;
-    
+    if(pos==-1)
+    {
+        cout<<"Líquido não encontrado"<<endl;
+    }
+    else{
+        cout << "Nome do Remedio : " << lista_liquidos[pos].get_nome() << endl;
+        cout << "Codigo GTIN do Remedio é : " << lista_liquidos[pos].get_gtin() << endl;
+        cout << "Validade do Remedio : " << lista_liquidos[pos].get_validade()<< endl;
+        cout << "Preco do Remedio : RS " << lista_liquidos[pos].get_preco() << endl;
+        cout << "Marca do Remedio : " << lista_liquidos[pos].get_marca() << endl;
+        cout << "Tarja do Remedio : " << lista_liquidos[pos].get_tarja() << endl;
+        cout << "Tipo do Remedio : " << lista_liquidos[pos].get_tipo() <<endl;
+        cout << "Unidades : " << lista_liquidos[pos].get_unidades() << endl;
+        cout << "Peso Liquido : " << lista_liquidos[pos].get_pesoliquido() <<endl;
+        cout << "Sabor: : " << lista_liquidos[pos].get_sabor() << endl;
+    }
+
+
 }
 
-void Farmacia::exibir_comprimido() 
+void Farmacia::exibir_comprimido()
 {
 	for (unsigned i = 0; i < lista_comprimidos.size(); i++)
    	   {
-   	   		
+
             cout << "==============================" << endl;
     		cout << "Nome do Remedio : " << lista_comprimidos[i].get_nome() << endl;
     		cout << "Codigo GTIN do Remedio e : " << lista_comprimidos[i].get_gtin() << endl;
@@ -304,7 +317,7 @@ void Farmacia::exibir_comprimido()
         }
 }
 
-void Farmacia::exibir_liquido() 
+void Farmacia::exibir_liquido()
 {
 	for (unsigned i = 0; i < lista_liquidos.size(); i++)
    	   {

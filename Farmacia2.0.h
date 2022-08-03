@@ -15,9 +15,13 @@ public:
 	//Bacana fazer o método de salvar arquivo separadamente tmb -Ygor
 	void adicionar_comprimido(Comprimido);  //FEITO
 	void adicionar_liquido(Liquido);  //FEITO
-
+    //Remove uma certa quantidade
 	void remover_comprimido(string,int);
 	void remover_liquido(string, int);
+
+	//Apaga o objeto
+	void apagar_comprimido(string);
+    void apagar_liquido(string);
 
 	int pesquisar_comprimido(string);   //FEITO
 	int pesquisar_liquido(string);  //FEITO

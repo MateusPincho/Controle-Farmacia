@@ -6,13 +6,15 @@
 
 using namespace std;
 
-#include "Remedio.cpp" ;
-#include "Comprimido.cpp" ;
-#include "Liquido.cpp" ;
-#include "Farmacia.cpp" ;
+#include "Remedio.cpp"
+#include "Comprimido.cpp"
+#include "Liquido.cpp"
+#include "Farmacia.cpp"
 
 int main()
 {
+        string testenome;
+        int removerqtd;
 		string nome;
         string gtin;
         string validade;
@@ -28,10 +30,10 @@ int main()
         int OP;
         int pesoliquido;
         string sabor;
-        
+
         Farmacia f1;
-        
-        
+
+
        while(1)
     	{
         	system("cls");
@@ -59,20 +61,22 @@ int main()
         	{
             	case 1: //Adicionar comprimido
             	{
-                	cout << "Nome do Remedio : " ;
-        			cin >> nome;
+            	    cout << "Nome do Remedio : " ;
+					cin.ignore();
+					getline(cin,nome);
         			cout << "Codigo GTIN : " ;
-        			cin >> gtin;
+        			getline(cin,gtin);
         			cout << "Validade : " ;
-        			cin >> validade;
-					cout << "Preco : " ;
+        			getline(cin,validade);
+        			cout << "Preco : " ;
         			cin >> preco;
         			cout << "Marca do Remedio : " ;
-        			cin >> marca;
+        			cin.ignore();
+        			getline(cin,marca);
         			cout << "Tarja do Remedio : " ;
-        			cin >> tarja;
+        			getline(cin,tarja);
         			cout << "Tipo do Remedio : " ;
-        			cin >> tipo;
+        			getline(cin,tipo);
         			cout << "Unidades : " ;
         			cin >> unidades;
         			cout << "Peso : " ;
@@ -82,9 +86,9 @@ int main()
         			cout << "Numero de Cartelas : " ;
         			cin >> cartelas;
         			cout << endl;
-        			
+
         			Comprimido c1(nome, gtin, validade, preco, marca, tarja, tipo, unidades, peso, quant_comprimidos, cartelas);
-        			
+
         			f1.adicionar_comprimido(c1);
         			quant++;
         			break;
@@ -96,38 +100,51 @@ int main()
 				}
 				case 3:
 				{
-					
+				    cout<<"Informe o nome do comprimido que deseja pesquisar"<<endl;
+					cin>>testenome;
+					f1.imprimir_comprimido(testenome);
+					break;
+
 				}
 				case 4:
 				{
-					
+				    cout<<"Informe o nome do comprimido que deseja remover"<<endl;
+                    cin>>testenome;
+                    cout<<"Informe a quantidade do comprimido que deseja remover"<<endl;
+                    cin>>removerqtd;
+                    f1.remover_comprimido(testenome,removerqtd);
+                    break;
+
 				}
 				case 5:
 				{
 					cout << "Nome do Remedio : " ;
-        			cin >> nome;
+					cin.ignore();
+					getline(cin,nome);
         			cout << "Codigo GTIN : " ;
-        			cin >> gtin;
+        			getline(cin,gtin);
         			cout << "Validade : " ;
-        			cin >> validade;
+        			getline(cin,validade);
         			cout << "Preco : " ;
         			cin >> preco;
         			cout << "Marca do Remedio : " ;
-        			cin >> marca;
+        			cin.ignore();
+        			getline(cin,marca);
         			cout << "Tarja do Remedio : " ;
-        			cin >> tarja;
+        			getline(cin,tarja);
         			cout << "Tipo do Remedio : " ;
-        			cin >> tipo;
+        			getline(cin,tipo);
         			cout << "Unidades : " ;
         			cin >> unidades;
         			cout << "Peso Liquido : " ;
         			cin >> pesoliquido;
         			cout << "Sabor : " ;
-        			cin >> sabor;
+        			cin.ignore();
+        			getline(cin,sabor);
         			cout << endl;
-        
+
 					Liquido l1(nome, gtin, validade, preco, marca, tarja, tipo, unidades, pesoliquido, sabor);
-					
+
 					f1.adicionar_liquido(l1);
 					break;
 				}
@@ -136,10 +153,27 @@ int main()
 					f1.exibir_liquido();
 					break;
 				}
+				case 7:
+				    {
+				      cout<<"Informe o nome do líquido que deseja pesquisar"<<endl;
+                        cin>>testenome;
+                        f1.imprimir_liquido(testenome);
+                        break;
+				    }
+
+                case 8:
+                    {
+                        cout<<"Informe o nome do remédio líquido que deseja remover"<<endl;
+                        cin>>testenome;
+                        cout<<"Informe a quantidade de unidades que deseja remover"<<endl;
+                        cin>>removerqtd;
+                        f1.remover_liquido(testenome,removerqtd);
+                        break;
+                    }
 			}
 			system("pause");
 		}
-	
-	
+
+
 	return 0;
 }

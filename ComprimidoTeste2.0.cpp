@@ -3,8 +3,8 @@
 
 using namespace std;
 
-#include "Remedio.cpp" ;
-#include "Comprimido.cpp" ;
+#include "Remedio2.0.cpp" ;
+#include "Comprimido2.0.cpp" ;
 
 int main()
 {
@@ -19,8 +19,8 @@ int main()
         int peso;
         int quant_comprimidos;
         int cartelas;
-        
-        
+
+
         cout << "Nome do Remedio : " ;
         cin >> nome;
         cout << "Codigo GTIN : " ;
@@ -44,9 +44,9 @@ int main()
         cout << "Numero de Cartelas : " ;
         cin >> cartelas;
         cout << endl;
-        
+
         Comprimido c1(nome, gtin, validade, preco, marca, tarja, tipo, unidades, peso, quant_comprimidos, cartelas);
-        
+
         c1.set_nome(nome);
         c1.set_gtin(gtin);
         c1.set_validade(validade);
@@ -58,7 +58,7 @@ int main()
         c1.set_peso(peso);
         c1.set_quant_comprimidos(quant_comprimidos);
         c1.set_cartelas(cartelas);
-        
+
         cout << "Nome : " << c1.get_nome() << endl;
         cout << "Codigo GTIN : " << c1.get_gtin() <<endl;
         cout << "Validade : " << c1.get_validade() << endl;
@@ -70,7 +70,7 @@ int main()
         cout << "Peso : " << c1.get_peso() << endl;
         cout << "Quantidade de Comprimidos : " << c1.get_quant_comprimidos() << endl;
         cout << "Cartelas : " << c1.get_cartelas() ;
-	
-	
+
+
 	return 0;
 }

@@ -1,11 +1,11 @@
-#include "Liquido.h"	//include do arquivo de cabecalho Liquido.h
+#include "Liquido2.0.h"	//include do arquivo de cabecalho Liquido.h
 
 //Construtor default + inicializacao dos atributos da classe Liquido herdando Remedio
 Liquido::Liquido(string nome, string gtin , string validade, float preco , string marca , string tarja , string tipo , int unidades,int pesoliquido, string sabor) : Remedio(nome,gtin,validade,preco,marca,tarja,tipo,unidades)
 {
 	this-> pesoliquido = pesoliquido ;
 	this-> sabor = sabor;
-	
+
 }
 
 //set do peso liquido

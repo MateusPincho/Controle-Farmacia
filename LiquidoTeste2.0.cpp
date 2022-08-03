@@ -3,8 +3,8 @@
 
 using namespace std;
 
-#include "Remedio.cpp" ;
-#include "Liquido.cpp" ;
+#include "Remedio2.0.cpp" ;
+#include "Liquido2.0.cpp" ;
 
 int main()
 {
@@ -18,8 +18,8 @@ int main()
         int unidades;
         int pesoliquido;
         string sabor;
-        
-        
+
+
         cout << "Nome do Remedio : " ;
         cin >> nome;
         cout << "Codigo GTIN : " ;
@@ -41,9 +41,9 @@ int main()
         cout << "Sabor : " ;
         cin >> sabor;
         cout << endl;
-        
+
         Liquido l1(nome, gtin, validade, preco, marca, tarja, tipo, unidades, pesoliquido, sabor);
-        
+
         l1.set_nome(nome);
         l1.set_gtin(gtin);
         l1.set_validade(validade);
@@ -54,7 +54,7 @@ int main()
         l1.set_unidades(unidades);
         l1.set_pesoliquido(pesoliquido);
         l1.set_sabor(sabor);
-        
+
         cout << "Nome : " << l1.get_nome() << endl;
         cout << "Codigo GTIN : " << l1.get_gtin() <<endl;
         cout << "Validade : " << l1.get_validade() << endl;
@@ -65,8 +65,8 @@ int main()
         cout << "Unidades : " << l1.get_unidades() << endl;
         cout << "Peso Liquido : " << l1.get_pesoliquido() << endl;
         cout << "Sabor : " << l1.get_sabor() ;
-	
-	
-	
+
+
+
 	return 0;
 }

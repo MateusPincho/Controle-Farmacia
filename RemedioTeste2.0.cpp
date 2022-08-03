@@ -3,7 +3,7 @@
 
 using namespace std;
 
-#include "Remedio.cpp";
+#include "Remedio2.0.cpp";
 
 int main()
 {
@@ -15,8 +15,8 @@ int main()
         string tarja;
         string tipo;
         int unidades;
-        
-        
+
+
         cout << "Nome do Remedio : " ;
         cin >> nome;
         cout << "Codigo GTIN : " ;
@@ -34,9 +34,9 @@ int main()
         cout << "Unidades : " ;
         cin >> unidades;
         cout << endl;
-        
+
         Remedio r1(nome, gtin, validade, preco, marca, tarja, tipo, unidades);
-        
+
         r1.set_nome(nome);
         r1.set_gtin(gtin);
         r1.set_validade(validade);
@@ -45,7 +45,7 @@ int main()
         r1.set_tarja(tarja);
         r1.set_tipo(tipo);
         r1.set_unidades(unidades);
-        
+
         cout << "Nome : " << r1.get_nome() << endl;
         cout << "Codigo GTIN : " << r1.get_gtin() <<endl;
         cout << "Validade : " << r1.get_validade() << endl;
@@ -54,8 +54,8 @@ int main()
         cout << "Tarja : " << r1.get_tarja() << endl;
         cout << "Tipo : " << r1.get_tipo() << endl;
         cout << "Unidades : " << r1.get_unidades() ;
-	
-	
-	
+
+
+
 	return 0;
 }
